@@ -8,20 +8,9 @@
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
  *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *  
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- *  
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+… *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
  *  
  ********************************************************************************/
 
@@ -53,21 +42,21 @@ struct TableLamp : Service::LightBulb{
 
 void setup() {     
  
-  Serial.begin(115200);       // start the Serial interface
+      Serial.begin(115200);       // start the Serial interface
   
-  homeSpan.begin();           // initialize HomeSpan
-
-  new SpanAccessory();           // Table Lamp Accessory
+  //homeSpan.begin(Category::Switches, "Living Room Ceiling Fan");           // initialize HomeSpan
+      homeSpan.begin(Category::Switches, "Wall_Charger");           // initialize HomeSpan
+      new SpanAccessory();           // Table Lamp Accessory
   
-    new Service::AccessoryInformation();            // HAP requires every Accessory to implement an AccessoryInformation Service  
+      new Service::AccessoryInformation();            // HAP requires every Accessory to implement an AccessoryInformation Service  
       new Characteristic::Name("WallCharger");      // Name of the Accessory, which shows up on the HomeKit "tiles", and should be unique across Accessories                                                    
-      new Characteristic::Manufacturer("HomeSpan");   // Manufacturer of the Accessory (arbitrary text string, and can be the same for every Accessory)
-      new Characteristic::SerialNumber("123-ABC");    // Serial Number of the Accessory (arbitrary text string, and can be the same for every Accessory)
-      new Characteristic::Model("120-Volt Lamp");     // Model of the Accessory (arbitrary text string, and can be the same for every Accessory)
-      new Characteristic::FirmwareRevision("0.9");
+      new Characteristic::Manufacturer("格润GREEN!");   // Manufacturer of the Accessory (arbitrary text string, and can be the same for every Accessory)
+      new Characteristic::SerialNumber("格润陈工-洞幺洞洞幺");    // Serial Number of the Accessory (arbitrary text string, and can be the same for every Accessory)
+      new Characteristic::Model("220-Volt AC & 12~24v Version");     // Model of the Accessory (arbitrary text string, and can be the same for every Accessory)
+      new Characteristic::FirmwareRevision("1.0");
       new Characteristic::Identify();               // HAP requires the Accessory Information Service to include the Identify Characteristic
         
-    new TableLamp(1);                              // instantiate the TableLamp Service (defined below) with lampPin set to 17
+    new TableLamp(1);       //my board is "1", but will be change to some pin that higher than 15                       // instantiate the TableLamp Service (defined below) with lampPin set to 17 
   
 } // end of setup()
 
