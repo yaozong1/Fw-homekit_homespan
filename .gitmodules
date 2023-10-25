@@ -1,0 +1,3 @@
+[submodule "homekit_wall_charger"]
+	path = homekit_wall_charger
+	url = git@github.com:yaozong1/homekit_wall_charger.git
